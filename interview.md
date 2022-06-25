@@ -7,15 +7,40 @@
     - [把一个数组旋转k步](#%E6%8A%8A%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E6%97%8B%E8%BD%ACk%E6%AD%A5)
     - [判断一个字符串是否是括号匹配](#%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%98%AF%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D)
     - [用两个栈实现一个队列](#%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%98%9F%E5%88%97)
-  - [实际工作经验](#%E5%AE%9E%E9%99%85%E5%B7%A5%E4%BD%9C%E7%BB%8F%E9%AA%8C)
-    - [H5页面如何进行首屏优化](#h5%E9%A1%B5%E9%9D%A2%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E9%A6%96%E5%B1%8F%E4%BC%98%E5%8C%96)
-    - [后端一次性返回10w条数据，要怎么办](#%E5%90%8E%E7%AB%AF%E4%B8%80%E6%AC%A1%E6%80%A7%E8%BF%94%E5%9B%9E10w%E6%9D%A1%E6%95%B0%E6%8D%AE%E8%A6%81%E6%80%8E%E4%B9%88%E5%8A%9E)
-    - [前端的常用设计模式和使用场景](#%E5%89%8D%E7%AB%AF%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF)
+    - [使用js反转单向链表](#%E4%BD%BF%E7%94%A8js%E5%8F%8D%E8%BD%AC%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8)
+      - [用链表实现队列](#%E7%94%A8%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97)
+    - [用 js 实现二分查找](#%E7%94%A8-js-%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE)
+    - [找出一个数组中和为n的两个数](#%E6%89%BE%E5%87%BA%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E4%B8%AD%E5%92%8C%E4%B8%BAn%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B0)
       - [观察者模式和发布订阅模式的区别](#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E5%92%8C%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB)
     - [实际工作中，做过什么vue优化](#%E5%AE%9E%E9%99%85%E5%B7%A5%E4%BD%9C%E4%B8%AD%E5%81%9A%E8%BF%87%E4%BB%80%E4%B9%88vue%E4%BC%98%E5%8C%96)
       - [使用 vue 遇到过哪些坑](#%E4%BD%BF%E7%94%A8-vue-%E9%81%87%E5%88%B0%E8%BF%87%E5%93%AA%E4%BA%9B%E5%9D%91)
     - [如果统一监听 Vue 组件报错](#%E5%A6%82%E6%9E%9C%E7%BB%9F%E4%B8%80%E7%9B%91%E5%90%AC-vue-%E7%BB%84%E4%BB%B6%E6%8A%A5%E9%94%99)
     - [工作中遇到哪些项目难点，如何解决](#%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E5%93%AA%E4%BA%9B%E9%A1%B9%E7%9B%AE%E9%9A%BE%E7%82%B9%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3)
+  - [HTTP/HTML/浏览器](#httphtml%E6%B5%8F%E8%A7%88%E5%99%A8)
+    - [http 和 https](#http-%E5%92%8C-https)
+    - [tcp 三次握手](#tcp-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B)
+    - [WebSocket 的实现和应用](#websocket-%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%92%8C%E5%BA%94%E7%94%A8)
+    - [HTTP 请求的方式，HEAD 方式](#http-%E8%AF%B7%E6%B1%82%E7%9A%84%E6%96%B9%E5%BC%8Fhead-%E6%96%B9%E5%BC%8F)
+    - [一个图片 url 访问后直接下载的实现](#%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%89%87-url-%E8%AE%BF%E9%97%AE%E5%90%8E%E7%9B%B4%E6%8E%A5%E4%B8%8B%E8%BD%BD%E7%9A%84%E5%AE%9E%E7%8E%B0)
+  - [HTTP2.0](#http20)
+    - [HTML5 drag API](#html5-drag-api)
+    - [状态码](#%E7%8A%B6%E6%80%81%E7%A0%81)
+    - [click 在 ios 上有 300ms 延迟，原因及如何解决](#click-%E5%9C%A8-ios-%E4%B8%8A%E6%9C%89-300ms-%E5%BB%B6%E8%BF%9F%E5%8E%9F%E5%9B%A0%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3)
+    - [addEventListener 参数](#addeventlistener-%E5%8F%82%E6%95%B0)
+    - [在地址栏里输入一个 URL,到这个页面呈现出来，中间会发生什么](#%E5%9C%A8%E5%9C%B0%E5%9D%80%E6%A0%8F%E9%87%8C%E8%BE%93%E5%85%A5%E4%B8%80%E4%B8%AA-url%E5%88%B0%E8%BF%99%E4%B8%AA%E9%A1%B5%E9%9D%A2%E5%91%88%E7%8E%B0%E5%87%BA%E6%9D%A5%E4%B8%AD%E9%97%B4%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88)
+    - [浏览器渲染原理与过程](#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86%E4%B8%8E%E8%BF%87%E7%A8%8B)
+      - [浏览器渲染网页的具体流程](#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E7%BD%91%E9%A1%B5%E7%9A%84%E5%85%B7%E4%BD%93%E6%B5%81%E7%A8%8B)
+      - [回流和重绘（reflow和repaint）](#%E5%9B%9E%E6%B5%81%E5%92%8C%E9%87%8D%E7%BB%98reflow%E5%92%8Crepaint)
+    - [常见的 HTTP 的头部](#%E5%B8%B8%E8%A7%81%E7%9A%84-http-%E7%9A%84%E5%A4%B4%E9%83%A8)
+    - [浏览器缓存机制](#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6)
+  - [CSS/LESS/SASS](#csslesssass)
+    - [viewport 和移动端布局](#viewport-%E5%92%8C%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80)
+  - [Vue](#vue)
+    - [Vue渲染/更新过程](#vue%E6%B8%B2%E6%9F%93%E6%9B%B4%E6%96%B0%E8%BF%87%E7%A8%8B)
+    - [父子组件生命周期](#%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F)
+    - [keep-alive](#keep-alive)
+    - [响应式原理](#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86)
+    - [hash和history](#hash%E5%92%8Chistory)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -46,6 +71,7 @@ function rotate(arr:number[], k: number): number {
     return all
 }
 ```
+
 
 ### 判断一个字符串是否是括号匹配
 
@@ -98,6 +124,7 @@ function matchBracket(str: string): boolean {
 ### 用两个栈实现一个队列
 
 > 队列：逻辑结构
+
 ```ts
 /**
  * 用两个栈实现一个队列
@@ -150,6 +177,7 @@ class MyQueue {
     }
 }
 ```
+
 
 ### 使用js反转单向链表
 
@@ -209,6 +237,260 @@ function createLinkList(arr: number[]): ILickListNode {
 - 需要三个指针 `prevNode` `curNode` `nextNode`
 
 
+```ts
+/**
+ * 定义接口类型
+ */
+interface ILickListNode {
+    value: number,
+    next?: ILickListNode
+}
+
+/**
+ * 反转单向链表，并返回反转之后的 head node
+ */
+function reverseLinkList(listnode: ILickListNode): ILickListNode {
+    // 定义三个指针
+    let prevNode: ILickListNode | undefined = undefined
+    let curNode: ILickListNode | undefined = undefined
+    let nextNode: ILickListNode | undefined = listnode
+
+    // 以 nextNode 为主 遍历链表
+    while(nextNode) {
+        // 第一个元素 删掉 next  防止循环引用
+        if(curNode && !prevNode) {
+            // 反转后第一个元素指向 null 所以删除
+            delete curNode.next
+        }
+
+        // 反转指针
+        // 如果是链表中间的 node
+        if(curNode && prevNode) {
+            curNode.next = prevNode
+        }
+
+        // 整体向后移动指针
+        prevNode = curNode
+        curNode = nextNode
+        nextNode = nextNode?.next
+    }
+
+    // 最后一个 node：当 nextNode 空时，此时 curNode 尚未设置 next
+    // ! 确定是有值的 ts语法
+    curNode!.next = prevNode
+
+    return curNode!
+}
+
+/**
+ * 根据数组创建单向链表
+ * @param arr number arr
+ */
+function createLinkList(arr: number[]): ILickListNode {
+    const length = arr.length
+    if(length === 0) throw new Error('arr is empty')
+
+    // 链表从前往后访问 数组转化成列表需要从后往前转化，先生成最后一个
+    let curNode: ILickListNode = {
+        value: arr[length - 1]
+    }
+
+    if(length === 1) return curNode
+
+    // 从倒数第二个开始 设置指针和value
+    for (let i = length - 2; i >= 0; i--) {
+        curNode = {
+            value: arr[i],
+            next: curNode
+        }
+    }
+
+    return curNode
+}
+```
+
+#### 用链表实现队列
+
+链表和数组实现队列性能分析
+1. 空间复杂度 => `O(n)`
+2. `add` 时间复杂度 => 链表`O(1)`，数组`O(1)`
+3. `delete` 时间复杂度 => 链表`O(1)`，数组`O(n)`
+- 数据结构的选择，要比算法优化更重要
+
+```ts
+interface IListNode {
+    value: number,
+    next?: IListNode // 相当于 next: IListNode | undefined
+}
+
+class MyQueue {
+    // 头
+    private head: IListNode | null = null
+    // 尾
+    private tail: IListNode | null = null
+    // 长度
+    private len = 0
+    /**
+     * 入队，在 tail 位置
+     * @param n number
+     */
+    add(n: number) {
+        const newNode: IListNode = {
+            value: n,
+            next: null
+        }
+
+        // 处理 head
+        if(this.head === null) {
+            this.head = newNode
+        }
+
+        // 处理 tail
+        const tailNode = this.tail
+        if(tailNode) {
+            tailNode.next = newNode
+        }
+        this.tail = newNode
+
+        // 记录长度
+        this.len++
+    }
+    delete(): number | null {
+        const headNode = this.head
+        if (headNode === null) return null
+        if (this.len <= 0) return null
+
+        // 取值
+        const value = headNode.value
+
+        // 处理 head
+        this.head = headNode.next
+
+        // 记录长度
+        this.len--
+        return value
+    }
+    get length(): number {
+        // length 要单独存储 不能遍历链表获取 否则时间复杂度过高
+        return this.len
+    }
+}
+```
+
+### 用 js 实现二分查找
+
+> 循环比递归性能更好
+> 凡有序必二分
+> 凡二分，时间复杂度必包含`O(logn)`
+
+- 递归会增加函数调用次数，细节上会慢一些，但是代码更简洁
+
+```ts
+/**
+ * 二分查找（循环）
+ * @param arr arr
+ * @param target target
+ */
+function binarySearch1(arr: number[], target: number): number {
+    const length = arr.length
+    if(length === 0) return -1
+    
+    let startIndex = 0 // 当前查找区域的开始位置
+    let endIndex = length - 1 // 当前查找区域的结束位置
+
+    while (startIndex <= endIndex) {
+        // 中间值索引
+        const midIndex = Math.floor((startIndex + endIndex) / 2)
+        // 中间值
+        const midValue = arr[midIndex]
+        if(target < midIndex) {
+            // 目标值较小，继续在左侧查找
+            endIndex = midIndex - 1
+        } else if(target > midIndex) {
+            // 目标值较大，继续在右侧查找
+            startIndex = midIndex + 1
+        } else {
+            // 相等，返回
+            return midIndex
+        }
+    }
+    return -1
+}
+
+/**
+ * 二分查找（递归）
+ * @param arr arr
+ * @param target target
+ * @param startIndex 当前查找区域的开始位置 不传默认是 0
+ * @param endIndex 当前查找区域的结束位置 不传默认是 arr.length - 1
+ */
+function binarySearch2(arr: number[], target: number, startIndex?: number = 0, endIndex?: number = arr.length - 1): number {
+    const length = arr.length
+    
+    // 如果 start 和 end 相遇 则结束
+    if(startIndex > endIndex) return -1
+
+    // 中间值索引
+    const midIndex = Math.floor((startIndex + endIndex) / 2)
+    // 中间值
+    const midValue = arr[midIndex]
+    if(target < midIndex) {
+        // 目标值较小，继续在左侧查找
+        endIndex = midIndex - 1
+        return binarySearch2(arr, target, startIndex, endIndex)
+    } else if(target > midIndex) {
+        // 目标值较大，继续在右侧查找
+        startIndex = midIndex + 1
+        return binarySearch2(arr, target, startIndex, endIndex)
+    } else {
+        // 相等，返回
+        return midIndex
+    }
+}
+```
+
+### 找出一个数组中和为n的两个数
+
+> 双指针 => 把时间复杂度降为`O(n)`
+> 优化嵌套循环，可以考虑“双指针”
+> 凡有序，必二分
+```ts
+/**
+ * 查找和为n的两个数（双指针）
+ * @param arr
+ * @param n
+ */
+function findTwoNumbers(arr: number[], n: number): number[] {
+    const res: number[] = []
+
+    const length = arr.length
+    if(length === 0) return res
+
+    let i = 0 // 头
+    let j = length - 1 // 尾
+
+    while(i < j) {
+        const n1 = arr[i]
+        const n2 = arr[j]
+        const sum = n1 + n2
+
+        if(n < sum) {
+            // 需要查找的和n比当前的和sum小，j 需要向前移动
+            j--
+        } else if (n > sum) {
+            // 需要查找的和n比当前的和sum大，i 需要向后移动
+            i++
+        } else {
+            // 相等
+            res.push(n1)
+            res.push(n2)
+            break
+        }
+    }
+
+    return res
+}
+```
 
 ## 实际工作经验
 
