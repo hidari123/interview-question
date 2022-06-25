@@ -492,6 +492,16 @@ function findTwoNumbers(arr: number[], n: number): number[] {
 }
 ```
 
+### 二叉树
+
+> 前序遍历：**root** -> left -> right
+> 中序遍历：left -> **root** -> right
+> 后序遍历：left -> right -> **root**
+
+```ts
+
+```
+
 ## 实际工作经验
 
 ### H5页面如何进行首屏优化
