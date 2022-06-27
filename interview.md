@@ -11,6 +11,16 @@
       - [用链表实现队列](#%E7%94%A8%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97)
     - [用 js 实现二分查找](#%E7%94%A8-js-%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE)
     - [找出一个数组中和为n的两个数](#%E6%89%BE%E5%87%BA%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E4%B8%AD%E5%92%8C%E4%B8%BAn%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B0)
+      - [二叉搜索树 BST（Binary Search Tree）](#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91-bstbinary-search-tree)
+      - [堆](#%E5%A0%86)
+    - [斐波那契数列的第n个值](#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E7%AC%ACn%E4%B8%AA%E5%80%BC)
+      - [青蛙跳台阶有几种方式](#%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%E6%9C%89%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F)
+    - [将数组中的0移动到末尾](#%E5%B0%86%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%840%E7%A7%BB%E5%8A%A8%E5%88%B0%E6%9C%AB%E5%B0%BE)
+    - [为什么 `0.1 + 0.2 !== 0.3`](#%E4%B8%BA%E4%BB%80%E4%B9%88-01--02--03)
+  - [实际工作经验](#%E5%AE%9E%E9%99%85%E5%B7%A5%E4%BD%9C%E7%BB%8F%E9%AA%8C)
+    - [H5页面如何进行首屏优化](#h5%E9%A1%B5%E9%9D%A2%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E9%A6%96%E5%B1%8F%E4%BC%98%E5%8C%96)
+    - [后端一次性返回10w条数据，要怎么办](#%E5%90%8E%E7%AB%AF%E4%B8%80%E6%AC%A1%E6%80%A7%E8%BF%94%E5%9B%9E10w%E6%9D%A1%E6%95%B0%E6%8D%AE%E8%A6%81%E6%80%8E%E4%B9%88%E5%8A%9E)
+    - [前端的常用设计模式和使用场景](#%E5%89%8D%E7%AB%AF%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%92%8C%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF)
       - [观察者模式和发布订阅模式的区别](#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E5%92%8C%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB)
     - [实际工作中，做过什么vue优化](#%E5%AE%9E%E9%99%85%E5%B7%A5%E4%BD%9C%E4%B8%AD%E5%81%9A%E8%BF%87%E4%BB%80%E4%B9%88vue%E4%BC%98%E5%8C%96)
       - [使用 vue 遇到过哪些坑](#%E4%BD%BF%E7%94%A8-vue-%E9%81%87%E5%88%B0%E8%BF%87%E5%93%AA%E4%BA%9B%E5%9D%91)
@@ -499,8 +509,245 @@ function findTwoNumbers(arr: number[], n: number): number[] {
 > 后序遍历：left -> right -> **root**
 
 ```ts
+interface ITreeNode {
+    value: number,
+    left: ITreeNode | null,
+    right: ITreeNode | null
+}
 
+/**
+ * 二叉树前序遍历（根节点，左子节点，右子节点）
+ * @param node tree node
+ */
+function preOrderTraverse(node: ITreeNode | null) {
+    if (node === null) return
+    console.log(node.value)
+    preOrderTraverse(node.left)
+    preOrderTraverse(node.right)
+}
+
+/**
+ * 二叉树中序遍历（左子节点，根节点，右子节点）
+ */
+function inOrderTraverse(node: ITreeNode | null) {
+    if (node === null) return
+    inOrderTraverse(node.left)
+    console.log(node.value)
+    inOrderTraverse(node.right)
+}
+
+/**
+ * 二叉树后序遍历（左子节点，右子节点，根节点）
+ */
+function postOrderTraverse(node: ITreeNode | null) {
+    if (node === null) return
+    postOrderTraverse(node.left)
+    postOrderTraverse(node.right)
+    console.log(node.value)
+}
+
+const tree: ITreeNode = {
+    value: 5,
+    left: {
+        value: 3,
+        left: {
+            value: 2,
+            left: null,
+            right: null
+        },
+        right: {
+            value: 4,
+            left: null,
+            right: null
+        }
+    },
+    right: {
+        value: 7,
+        left: {
+            value: 6,
+            left: null,
+            right: null
+        },
+        right: {
+            value: 8,
+            left: null,
+            right: null
+        }
+    }
+}
 ```
+
+#### 二叉搜索树 BST（Binary Search Tree）
+
+- 思路：
+1. 二叉搜索树中序遍历
+2. 找到第k个值
+
+```ts
+interface ITreeNode {
+    value: number,
+    left: ITreeNode | null,
+    right: ITreeNode | null
+}
+
+const arr: number[] = []
+
+/**
+ * 寻找 BST 里的第 k 小值
+ * @param node tree node
+ */
+function getKthValue(node: ITreeNode, k: number): number | null {
+    // 中序遍历
+    inOrderTraverse(node)
+    return arr[k] || null
+}
+
+/**
+ * 二叉树中序遍历（左子节点，根节点，右子节点）
+ */
+function inOrderTraverse(node: ITreeNode | null) {
+    if (node === null) return
+    inOrderTraverse(node.left)
+    arr.push(node.value)
+    inOrderTraverse(node.right)
+}
+
+const bst: ITreeNode = {
+    value: 5,
+    left: {
+        value: 3,
+        left: {
+            value: 2,
+            left: null,
+            right: null
+        },
+        right: {
+            value: 4,
+            left: null,
+            right: null
+        }
+    },
+    right: {
+        value: 7,
+        left: {
+            value: 6,
+            left: null,
+            right: null
+        },
+        right: {
+            value: 8,
+            left: null,
+            right: null
+        }
+    }
+}
+```
+
+#### 堆
+
+- 最小堆（根节点最小）；最大堆（根节点最大）
+- 逻辑结构：二叉树
+- 物理结构：数组
+    - 数组：适合连续存储 + 节省空间
+- 堆和二叉搜索树 BST
+    - 查询比 BST 慢
+    - 增删比 BST 快，维持平衡更快
+    - 整体时间复杂度都在 `O(logn)` 级别，即树的高度
+- 堆的使用场景
+    - 适合“堆栈模型”
+    - 堆的数据，都是在栈中引用的，不需要从 root 遍历
+    - 堆恰好是数组形式，根据栈的地址，可用 `O(1)` 找到目标
+
+### 斐波那契数列的第n个值
+
+- 递归：大量重复运算，时间复杂度是`O(2^n)`
+```ts
+/**
+ * 斐波那契数列（递归）
+ * @param n n
+ */
+function fibonacci(n: number): number {
+    if(n <= 0) return 0
+    if(n === 1) return 1
+
+    return fibonacci(n - 1) + fibonacci(n - 2)
+}
+```
+
+- 优化：
+    - 不用递归，用循环
+    - 记录中间结果
+```ts
+/**
+ * 斐波那契数列（循环）
+ * @param n n
+ */
+function fibonacci(n: number): number {
+    if(n <= 0) return 0
+    if(n === 1) return 1
+
+    let n1 = 1 // 记录 n-1 的结果
+    let n2 = 0 // 记录 n-2 的结果
+    let res = 0
+
+    for(let i = 2; i <= n; i++) {
+        res = n1 + n2
+
+        // 记录中间结果
+        n2 = n1
+        n1 = res
+    }
+
+    return res
+}
+```
+
+**总结：**
+动态规划：
+- 把一个大问题，拆解为多个小问题，逐级向下拆解
+- 用递归思路分析，再改为循环实现
+- 算法三大思维：贪心，二分，动态规划
+
+#### 青蛙跳台阶有几种方式
+
+- `f(n) = f(n-1) + f(n-2)`
+- 如果第一次跳1级台阶，还剩下f(n-1)种方法
+- 如果第一次跳2级台阶，还剩下f(n-2)种方法
+- 斐波那契数列
+
+### 将数组中的0移动到末尾
+
+> 如输入`[1,0,3,0,11,0]`，输出`[1,3,11,0,0,0]`
+> 只移动`0`，其他顺序不变
+> 必须在原数组上操作
+
+```ts
+/**
+ * 移动0到数组的末尾（嵌套循环）
+ * @param arr number arr
+ */
+function moveZero(arr: number[]): void {
+    const length = arr.length
+    if(length === 0) return
+
+    let zeroLength = 0
+
+    // 时间复杂度 O(n^2)
+    for (let i = 0; i < length - zeroLength; i++) {
+        if(arr[i] === 0) {
+            arr.push(0)
+            arr.splice(i, 1)
+            i-- // 数组截取了一个元素，i 要递减，否则连续 0 就会有错误 需要重新回到上一次的元素再进行判断
+            zeroLength++
+        }
+    }
+}
+```
+
+### 为什么 `0.1 + 0.2 !== 0.3`
+
+- 整数转换二进制没有误差，9转换二进制是1001
+- 小数可能无法用二进制准确表达
 
 ## 实际工作经验
 
